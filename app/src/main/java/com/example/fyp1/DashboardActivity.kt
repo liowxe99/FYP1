@@ -48,7 +48,11 @@ class DashboardActivity : AppCompatActivity() {
             Snackbar.make(it, "Doctor click", Snackbar.LENGTH_SHORT).show()
         }
         cComment!!.setOnClickListener{
-            Snackbar.make(it, "Comments click", Snackbar.LENGTH_SHORT).show()
+            var intent = Intent(this, CommentsViewAllActivity::class.java)
+
+            intent.putExtra("UserID",userID)
+            intent.putExtra("Name",name)
+            startActivity(intent)
         }
         cHistory!!.setOnClickListener{
             Snackbar.make(it, "History click", Snackbar.LENGTH_SHORT).show()

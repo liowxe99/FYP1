@@ -36,6 +36,11 @@ class CommentsViewAllActivity : AppCompatActivity() {
         adapter = CommentsAdapter(commentsList,this,"report",this)
         readData()
         setContentView(R.layout.activity_comments_view_all)
+
+        val intent = intent
+        val userID = intent.getStringExtra("UserID")
+        val name = intent.getStringExtra("Name")
+
         var navigationView = findViewById<BottomNavigationView>(R.id.navigationView)
 
         navigationView.selectedItemId  = R.id.edit
@@ -48,8 +53,11 @@ class CommentsViewAllActivity : AppCompatActivity() {
                 }
                 R.id.delete -> {
                     Toast.makeText(this,"yours click!",Toast.LENGTH_SHORT)
-                    val intphto = Intent(this, CommentsViewActivity::class.java)
-                    startActivity(intphto)
+                    val intent = Intent(this, CommentsViewActivity::class.java)
+
+                    intent.putExtra("UserID",userID)
+                    intent.putExtra("Name",name)
+                    startActivity(intent)
                     overridePendingTransition(0,0)
                     true
                 }

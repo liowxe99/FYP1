@@ -7,10 +7,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.RatingBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,12 +25,14 @@ class CommentAddActivity : AppCompatActivity() {
 
     lateinit var tRatingBar: RatingBar
     lateinit var tRate: TextView
+    lateinit var tComm: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment_add)
         tRatingBar = findViewById<RatingBar>(R.id.rateBar)
         tRate = findViewById<TextView>(R.id.rateText)
+        tComm = findViewById<EditText>(R.id.commentsEditText)
 
         rateBar.setOnRatingBarChangeListener(object : RatingBar.OnRatingBarChangeListener {
             override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
@@ -109,8 +108,8 @@ class CommentAddActivity : AppCompatActivity() {
                         commentID = generateID(id.toString())
 
                         val alertDialog = AlertDialog.Builder(this@CommentAddActivity,R.style.AlertDialogCustom).create()
-                        alertDialog.setTitle("Title")
-                        alertDialog.setMessage("Message")
+                        alertDialog.setTitle("Confirmation")
+                        alertDialog.setMessage("Do you want to post this comment?")
 
                         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Confirm") { dialog, which ->
                             commDate = SimpleDateFormat("yyyyMMdd",Locale.getDefault()).format(Date())
@@ -123,6 +122,8 @@ class CommentAddActivity : AppCompatActivity() {
                             commentDatabaseReference!!.child("commentsSno").child(commentCount.toString()).child("commentID").setValue(commentID)
                             commentDatabaseReference!!.child("commentsCounter").setValue(commentCount.toString())
 
+                            tComm.text.clear()
+                            tComm.requestFocus()
                             Log.i("myInfoTag", "completed!!") }
 
                         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel") { dialog, which ->

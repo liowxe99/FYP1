@@ -28,6 +28,8 @@ class CommentsViewActivity : AppCompatActivity() {
 //    private var swipeBgdEdit: ColorDrawable = ColorDrawable(Color.parseColor("#0000FF"))
 //    private var swipeBgdDelete: ColorDrawable = ColorDrawable(Color.parseColor("#0000FF"))
 
+    lateinit var userID:String
+    lateinit var name:String
     private lateinit var adapter: CommentsAdapter
     val commentsList: MutableList<Comments> = mutableListOf<Comments>()
 
@@ -38,6 +40,11 @@ class CommentsViewActivity : AppCompatActivity() {
         readData()
 
         setContentView(R.layout.activity_comments_view)
+
+        val intent = intent
+        userID = intent.getStringExtra("UserID")
+        name = intent.getStringExtra("Name")
+
         var navigationView = findViewById<BottomNavigationView>(R.id.navigationView)
 
         navigationView.selectedItemId  = R.id.delete
@@ -46,8 +53,10 @@ class CommentsViewActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.edit -> {
                     Toast.makeText(this,"all comments click!",Toast.LENGTH_SHORT)
-                    val intphto = Intent(this, CommentsViewAllActivity::class.java)
-                    startActivity(intphto)
+                    val intent = Intent(this, CommentsViewAllActivity::class.java)
+                    intent.putExtra("UserID",userID)
+                    intent.putExtra("Name",name)
+                    startActivity(intent)
                     overridePendingTransition(0,0)
                     true
                 }
@@ -87,8 +96,9 @@ class CommentsViewActivity : AppCompatActivity() {
                             comment.rating.toString(),
                             comment.status.toString()
                         )
-                        if (item.status!="disabled" )
-                            commentsList.add(item)
+                        val user =dataSnapshot.child("patient").child(userID).child("patientID").getValue()!!
+                        if (item.status!="disabled" && userID == item.patientID){
+                            commentsList.add(item)}
                         //Log.i("myInfoTag", "Comment ${comment.commentID.toString()} : ${comment.toString()}")
                         //Log.i("myInfoTag", "${item.toString()}")
                     }
