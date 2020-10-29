@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CommentAddActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:text="Comments and Rate"
+        android:textColor="@android:color/black"
+        android:textSize="32dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/RatingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rateBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="15dp"
+        android:text="Rating: "
+        android:textColor="@android:color/black"
+        android:textSize="24dp" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/RatingText"
+        android:numStars="5"
+        android:progressTint="@color/colorPrimary"
+        android:progressBackgroundTint="#7A7777"
+        android:rating="5"
+        android:stepSize="1" />
+
+    <TextView
+        android:id="@+id/rateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rateBar"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/rateBar"
+        android:text="5.0"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/CommentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rateBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Comments:"
+        android:textColor="@android:color/black"
+        android:textSize="24dp" />
+
+
+    <EditText
+        android:id="@+id/commentsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@+id/CommentsText"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="top"
+        android:padding="8dp"
+        android:background="@drawable/edit_text_field"
+        android:maxLength="100"
+        />
+
+    <TextView
+        android:id="@+id/textCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/commentsEditText"
+        android:layout_alignBottom="@+id/commentsEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-31dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="14dp"
+        android:text="0/100"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:padding="4dp"
+        android:layout_above="@+id/navigationView">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_round"
+            android:backgroundTint="#E6A0A0"
+            android:text="Back" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="insertItem"
+            android:background="@drawable/button_round"
+            android:backgroundTint="#74C6A5"
+            android:text="Post" />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:itemBackground="@android:color/holo_blue_bright"
+        app:itemIconTint="@drawable/menu_selector"
+        app:itemTextColor="@drawable/menu_selector"
+        app:menu="@menu/nav_menu"/>
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/doctorDetailsFragment">
+    <fragment
+        android:id="@+id/doctorDetailsFragment"
+        android:name="com.example.fyp1.doctorDetailsFragment"
+        android:label="doctorDetailsFragment"
+        tools:layout="@layout/fragment_doctor_details">
+        <action
+            android:id="@+id/action_doctorDetailsFragment_to_doctorListFragment"
+            app:popUpTo="@id/doctorListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorListFragment"
+        android:name="com.example.fyp1.doctorListFragment"
+        android:label="doctorListFragment"
+        tools:layout="@layout/fragment_doctor_list"/>
+</navigation>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:text="Comments and Rate"
+        android:textColor="@android:color/black"
+        android:textSize="24dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
+    <RatingBar
+        android:id="@+id/rateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/RatingText"
+        android:maxHeight="40dip"
+        android:minHeight="30dip"
+        android:numStars="5"
+        android:progressBackgroundTint="#7A7777"
+        android:progressTint="@color/colorPrimary"
+        android:rating="5"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:stepSize="1"
+        android:transformPivotX="0dp"
+        android:layout_below="@id/title"/>
+
+    <TextView
+        android:id="@+id/RatingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rateBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="18dp"
+        android:text="Rating: "
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/rateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rateBar"
+        android:layout_marginStart="-115dp"
+        android:layout_marginBottom="18dp"
+        android:layout_toEndOf="@+id/rateBar"
+        android:text="5.0"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/CommentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rateBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Comments:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+
+    <EditText
+        android:id="@+id/commentsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/CommentsText"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="top"
+        android:maxLength="100"
+        android:background="@drawable/edit_text_field"
+        android:padding="8dp" />
+
+
+    <TextView
+        android:id="@+id/textCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/commentsEditText"
+        android:layout_alignBottom="@+id/commentsEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-31dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="14dp"
+        android:text="0/100"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+
+</RelativeLayout>

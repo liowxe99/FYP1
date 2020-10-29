@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "504854824315",
+    "firebase_url": "https://fyp-clinic-appt-system.firebaseio.com",
+    "project_id": "fyp-clinic-appt-system",
+    "storage_bucket": "fyp-clinic-appt-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504854824315:android:acac43f94a15c9ba5ce9de",
+        "android_client_info": {
+          "package_name": "com.example.fyp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504854824315-moddosnu9f7qcj3vakrcelb3hi0760mh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fyp1",
+            "certificate_hash": "995b5649fc62e43e073354121a1f540fb960cd7a"
+          }
+        },
+        {
+          "client_id": "504854824315-01b7tvsju03u68c3g7k4gug1s5t2refh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0gGPqBADQLLJMcGSh42kx8D2Lc7Ip25s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504854824315-01b7tvsju03u68c3g7k4gug1s5t2refh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
