@@ -121,6 +121,7 @@ class UserRegisterActivity : AppCompatActivity() {
                           Log.i("myInfoTag","Current count is $count and next is ${patientCount.toString()}")
                         patientCounterDatabaseReference!!.setValue(patientCount.toString())
                         patientSnoDatabaseReference!!.child(patientCount.toString()).child("userID").setValue(ID)
+                        patientDatabaseReference!!.child(ID).setValue(patient)
                     }
                 }
             })
@@ -140,7 +141,6 @@ class UserRegisterActivity : AppCompatActivity() {
 //            patientDatabaseReference!!.child(ID).child("status").setValue(tStatus)
 //            patientDatabaseReference!!.child(ID).child("userID").setValue(ID)
 
-            patientDatabaseReference!!.child(ID).setValue(patient)
             Toast.makeText(this, "Register Success", Toast.LENGTH_LONG).show()
             Cleartxt()
         }

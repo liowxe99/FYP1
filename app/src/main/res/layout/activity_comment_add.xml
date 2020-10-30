@@ -107,6 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="backFunction"
             android:background="@drawable/button_round"
             android:backgroundTint="#E6A0A0"
             android:text="Back" />

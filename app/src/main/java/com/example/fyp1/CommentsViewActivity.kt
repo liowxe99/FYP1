@@ -131,10 +131,11 @@ class CommentsViewActivity : AppCompatActivity() {
     }
 
     fun insertItem(view: View) {
-        val intphto = Intent(this, CommentAddActivity::class.java)
-        startActivity(intphto)
 
-
+        val intent = Intent(this, CommentAddActivity::class.java)
+        intent.putExtra("UserID",userID)
+        intent.putExtra("Name",name)
+        startActivity(intent)
 //        val index = Random.nextInt(2)
 //        val newItem = ExampleItem(
 //            "New item at position $index",

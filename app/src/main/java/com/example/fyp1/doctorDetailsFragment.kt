@@ -47,6 +47,8 @@ class doctorDetailsFragment(
             val intent = Intent(context, ApptBookingActivity::class.java)
             intent.putExtra("UserID",id)
             intent.putExtra("StaffID",stf.staffID.toString())
+            intent.putExtra("Name",name)
+            intent.putExtra("docName",stf.name.toString())
             startActivity(intent)
         }
         return binding.root

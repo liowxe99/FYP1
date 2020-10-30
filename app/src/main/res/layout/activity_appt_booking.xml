@@ -9,6 +9,20 @@
         <variable
             name="time"
             type="String" />
+
+        <variable
+            name="apptTime"
+            type="String" />
+        <variable
+            name="apptDate"
+            type="String" />
+        <variable
+            name="schID"
+            type="String" />
+
+        <variable
+            name="docName"
+            type="String" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,6 +54,7 @@
                 android:background="#E8F5E9"
                 android:drawableStart="@drawable/ic_date"
                 android:textSize="20sp"
+                android:id="@+id/txtDate"
                 android:editable="false"/>
             <EditText
                 android:layout_width="match_parent"
@@ -50,6 +65,7 @@
                 android:background="#E8F5E9"
                 android:drawableStart="@drawable/ic_time"
                 android:textSize="20sp"
+                android:id="@+id/txtTime"
                 android:editable="false"/>
         </LinearLayout>
         <ScrollView
@@ -120,6 +136,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_round"
                 android:backgroundTint="#C5E1A5"
+                android:onClick="insertAppt"
                 android:text="Make Appointment"
                 android:textColor="@android:color/black" />
         </LinearLayout>

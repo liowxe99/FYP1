@@ -23,6 +23,8 @@ class CommentAddActivity : AppCompatActivity() {
 
     var commentCount: Int? = 0
 
+    lateinit var userID:String
+    lateinit var name:String
     lateinit var tRatingBar: RatingBar
     lateinit var tRate: TextView
     lateinit var tComm: EditText
@@ -33,6 +35,10 @@ class CommentAddActivity : AppCompatActivity() {
         tRatingBar = findViewById<RatingBar>(R.id.rateBar)
         tRate = findViewById<TextView>(R.id.rateText)
         tComm = findViewById<EditText>(R.id.commentsEditText)
+
+        val intent = intent
+        userID = intent.getStringExtra("UserID")
+        name = intent.getStringExtra("Name")
 
         rateBar.setOnRatingBarChangeListener(object : RatingBar.OnRatingBarChangeListener {
             override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
@@ -76,6 +82,12 @@ class CommentAddActivity : AppCompatActivity() {
 
 
 }
+    fun backFunction(view: View){
+        val intent = Intent(this, CommentsViewActivity::class.java)
+        intent.putExtra("UserID",userID)
+        intent.putExtra("Name",name)
+        startActivity(intent)
+    }
     fun generateID(lastID:String):String{
         var num = lastID.substring(1).toInt()
         return "C"+String.format("%04d",num+1)
@@ -86,7 +98,7 @@ class CommentAddActivity : AppCompatActivity() {
         var commTime: String
         val content = commentsEditText.text.toString().trim{it<=' '}
         var commentID: String
-        val patientID: String = "xue99"
+        val patientID: String = userID
         var rating: String = rateText.text.toString()
         var status: String = "enabled"
 

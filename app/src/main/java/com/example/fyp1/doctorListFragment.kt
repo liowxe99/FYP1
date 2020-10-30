@@ -95,11 +95,13 @@ class doctorListFragment(
                                 stfDesc.expYear.toString().toInt()
                             )
                             docDesc.add(itemStfDesc)
-                            doctor_recycler_view.adapter = adapter
-                            doctor_recycler_view.layoutManager =
-                                LinearLayoutManager(context)
-                            doctor_recycler_view.setHasFixedSize(true)
 
+                        }
+                        if (!docDesc.isEmpty()){
+                        doctor_recycler_view.adapter = adapter
+                        doctor_recycler_view.layoutManager =
+                            LinearLayoutManager(context)
+                        doctor_recycler_view.setHasFixedSize(true)
                         }
                         //Log.i("myInfoTag", "Comment ${comment.commentID.toString()} : ${comment.toString()}")
                         //Log.i("myInfoTag", "${item.toString()}")
@@ -113,7 +115,7 @@ class doctorListFragment(
                 Log.i("myInfoTag", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        databaseReference!!.addValueEventListener(postListener)
+        databaseReference!!.addListenerForSingleValueEvent(postListener)
     }
 
 }

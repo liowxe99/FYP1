@@ -59,7 +59,7 @@ class ApptTimeSlotAdapter(
                 if (mListener != null) {
                     mListener!!.onTimeSlotClick(sch)
                 }
-                Snackbar.make(it, "$timeStr click", Snackbar.LENGTH_SHORT).show()
+                //Snackbar.make(it, "$timeStr click", Snackbar.LENGTH_SHORT).show()
             }
 
         }
