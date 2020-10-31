@@ -1,5 +1,6 @@
 package com.example.fyp1
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -202,6 +203,14 @@ class ApptBookingActivity : AppCompatActivity(),ApptTimeSlotAdapter.ItemListener
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        var intent = Intent(this, DoctorListViewActivity::class.java)
+
+        intent.putExtra("UserID",userID)
+        intent.putExtra("Name",name)
+        startActivity(intent)
+    }
     fun isDuplicate(){
         //TODO check apptID isNotDuplicate
     }

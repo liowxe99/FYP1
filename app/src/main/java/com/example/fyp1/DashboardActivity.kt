@@ -80,4 +80,9 @@ class DashboardActivity : AppCompatActivity() {
             }
             false}
     }
+//TODO logout Function
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+    }
 }

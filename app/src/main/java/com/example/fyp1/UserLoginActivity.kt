@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
+import com.example.fyp1.Utils.AppPreferences
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
 
@@ -21,30 +22,37 @@ class UserLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
-        tUserID = findViewById<View>(R.id.textInputEditTextUserID) as TextInputEditText?
-        tPassword = findViewById<View>(R.id.textInputEditTextPassword) as TextInputEditText?
-        btnLogin = findViewById<View>(R.id.appCompatButtonLogin) as AppCompatButton?
-        txtRegister = findViewById<View>(R.id.textViewLinkRegister) as AppCompatTextView?
-        databaseReference = FirebaseDatabase.getInstance().getReference("patient")
-        btnLogin!!.setOnClickListener {
-            //pw encryption
-            var pwd1: String? = null
-            try {
-                pwd1 = Security.encrypt(tPassword!!.text.toString())
+        if (AppPreferences.isLogin) {
+            val intent = Intent(applicationContext, DashboardActivity::class.java)
+            intent.putExtra("UserID", AppPreferences.userid)
+            intent.putExtra("Name", AppPreferences.username)
+            startActivity(intent)
+        }else{
+            tUserID = findViewById<View>(R.id.textInputEditTextUserID) as TextInputEditText?
+            tPassword = findViewById<View>(R.id.textInputEditTextPassword) as TextInputEditText?
+            btnLogin = findViewById<View>(R.id.appCompatButtonLogin) as AppCompatButton?
+            txtRegister = findViewById<View>(R.id.textViewLinkRegister) as AppCompatTextView?
+            databaseReference = FirebaseDatabase.getInstance().getReference("patient")
+            btnLogin!!.setOnClickListener {
+                //pw encryption
+                var pwd1: String? = null
+                try {
+                    pwd1 = Security.encrypt(tPassword!!.text.toString())
 
-            } catch (e: Exception) {
-                e.printStackTrace()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                Log.i("myInfoTag","info message:"+pwd1.toString())
+                logIn(tUserID!!.text.toString(), tPassword!!.text.toString())
             }
-            Log.i("myInfoTag","info message:"+pwd1.toString())
-            logIn(tUserID!!.text.toString(), tPassword!!.text.toString())
-        }
-        txtRegister!!.setOnClickListener {
-            val intphto = Intent(applicationContext, UserRegisterActivity::class.java)
-            startActivity(intphto)
+            txtRegister!!.setOnClickListener {
+                val intphto = Intent(applicationContext, UserRegisterActivity::class.java)
+                startActivity(intphto)
+            }
         }
     }
 
-    private fun logIn(id: String, password: String?) {
+    private fun logIn(id: String, password: String) {
         databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.child(id).exists()) {
@@ -58,10 +66,13 @@ class UserLoginActivity : AppCompatActivity() {
                         }
                         //Toast.makeText(this@UserLoginActivity, user.loginPw.toString(), Toast.LENGTH_LONG).show()
                         if (pwd == password) {
+                            AppPreferences.isLogin = true
+                            AppPreferences.username = patient.name.toString()
+                            AppPreferences.userid = patient.userID.toString()
                             Toast.makeText(this@UserLoginActivity, "Login Success", Toast.LENGTH_LONG).show()
                             val intent = Intent(applicationContext, DashboardActivity::class.java)
-                            intent.putExtra("UserID", patient.userID.toString())
-                            intent.putExtra("Name", patient.name.toString())
+                            intent.putExtra("UserID", AppPreferences.userid)
+                            intent.putExtra("Name", AppPreferences.username)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this@UserLoginActivity, "Password Incorrect", Toast.LENGTH_LONG).show()
